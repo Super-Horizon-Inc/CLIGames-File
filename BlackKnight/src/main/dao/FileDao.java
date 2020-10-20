@@ -1,23 +1,34 @@
-package dao;
+package main.dao;
 
-import models.Map;
+import main.models.Map;
 import java.io.*;
 
 public class FileDao {
-    private static ObjectInputStream objectInputStream = null;
-    private static ObjectOutputStream objectOutputStream = null;
+    private static ObjectInputStream objectInputStream;
+    private static ObjectOutputStream objectOutputStream;
     private static final String fileName = "db.txt";
 
     public FileDao() {
         try {
+            System.out.println("AAA");
             if (objectInputStream == null) {
+                System.out.println("BBB");
+//                File dbFile = new File(fileName);
+//                dbFile.createNewFile();
                 objectInputStream = new ObjectInputStream(new FileInputStream(fileName));
             }
             if (objectOutputStream == null) {
+                System.out.println("CCC");
+                File dbFile = new File(fileName);
+                dbFile.createNewFile();
                 objectOutputStream = new ObjectOutputStream(new FileOutputStream(fileName));
             }
         }
         catch (IOException e) {
+            //e.printStackTrace();
+        }
+        catch (Exception e) {
+            System.out.println(e.toString());
             e.printStackTrace();
         }
     }
@@ -37,8 +48,13 @@ public class FileDao {
     public void saveOrUpdateMap(Map map) {
         try {
             objectOutputStream.writeObject(map);
-        } catch (IOException e) {
+            //System.out.println("aaa");
+        }
+        catch (IOException e) {
             e.printStackTrace();
+        }
+        catch (Exception e) {
+            //System.out.println(e.toString());
         }
     }
 

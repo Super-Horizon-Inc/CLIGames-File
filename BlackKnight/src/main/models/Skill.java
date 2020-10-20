@@ -1,4 +1,4 @@
-package models;
+package main.models;
 
 /**
  * A class for Skills of Main Character of the game.

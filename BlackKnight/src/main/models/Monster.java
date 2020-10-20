@@ -1,4 +1,4 @@
-package models;
+package main.models;
 
 /**
  * A class for Monsters of the game.

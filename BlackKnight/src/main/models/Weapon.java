@@ -1,4 +1,4 @@
-package models;
+package main.models;
 
 /**
  * A class for Weapons of Characters of the game.
