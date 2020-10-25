@@ -1,4 +1,6 @@
-package models;
+package main.models;
+
+import java.io.Serializable;
 
 /**
  * A class for position of Character

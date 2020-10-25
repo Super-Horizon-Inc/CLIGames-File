@@ -1,16 +1,17 @@
-package models;
+package main.models;
+
+import java.io.Serializable;
 
 /**
- * A class for Weapons of Characters of the game.
+ * A class for Skills of Main Character of the game.
  */
-public class Weapon {
+public class Skill {
 
 //    private int id;
     private String name;
+    public Skill() {}
 
-    public Weapon() {}
-
-    public Weapon(String name) { this.name = name; }
+    public Skill(String name) { this.name = name; }
 
 //    public int getId() { return this.id; }
 //

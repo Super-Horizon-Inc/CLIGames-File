@@ -1,11 +1,12 @@
-package models;
+package main.models;
 
+import java.io.Serializable;
 import java.util.*;
 
 /**
  * A class for Maps of the game.
  */
-public class Map {
+public class Map implements Serializable {
 
 //    private int id;
 //    private boolean isActive;
