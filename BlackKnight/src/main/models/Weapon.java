@@ -1,6 +1,9 @@
 package main.models;
+<<<<<<< HEAD:BlackKnight/src/main/models/Weapon.java
+=======
 
 import java.io.Serializable;
+>>>>>>> b0bbeca1f4371aca4d0d9acfe6171f28125ea007:BlackKnight/src/models/Weapon.java
 
 /**
  * A class for Weapons of Characters of the game.

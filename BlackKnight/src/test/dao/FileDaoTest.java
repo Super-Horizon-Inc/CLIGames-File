@@ -1,16 +1,5 @@
 package test.dao;
 
-import main.dao.FileDao;
-import main.models.*;
-import static org.junit.Assert.*;
-
-import main.models.Character;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import main.models.*;
-import main.dao.*;
-
 import java.io.File;
 import java.io.IOException;
 
