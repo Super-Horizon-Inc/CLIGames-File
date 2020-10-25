@@ -1,4 +1,9 @@
 package main.models;
+<<<<<<< HEAD:BlackKnight/src/main/models/Position.java
+=======
+
+import java.io.Serializable;
+>>>>>>> b0bbeca1f4371aca4d0d9acfe6171f28125ea007:BlackKnight/src/models/Position.java
 
 /**
  * A class for position of Character
