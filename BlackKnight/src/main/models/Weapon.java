@@ -1,5 +1,7 @@
 package main.models;
 
+import java.io.Serializable;
+
 /**
  * A class for Weapons of Characters of the game.
  */
