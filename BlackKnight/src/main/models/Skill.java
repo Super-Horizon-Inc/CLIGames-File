@@ -1,9 +1,4 @@
 package main.models;
-<<<<<<< HEAD:BlackKnight/src/main/models/Skill.java
-=======
-
-import java.io.Serializable;
->>>>>>> b0bbeca1f4371aca4d0d9acfe6171f28125ea007:BlackKnight/src/models/Skill.java
 
 /**
  * A class for Skills of Main Character of the game.

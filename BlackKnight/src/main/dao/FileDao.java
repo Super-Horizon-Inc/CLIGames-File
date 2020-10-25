@@ -48,7 +48,6 @@ public class FileDao {
     public void saveOrUpdateMap(Map map) {
         try {
             objectOutputStream.writeObject(map);
-            //System.out.println("aaa");
         }
         catch (IOException e) {
             e.printStackTrace();
