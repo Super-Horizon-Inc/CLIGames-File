@@ -13,5 +13,4 @@ public class MapDriver {
         map.setPath(width, height);
         return map.getPath();
     }
-
 }

@@ -23,6 +23,7 @@ public class MapDesign {
             for (int j = 0; j < width; j++) {
                 System.out.print(path[j][i]);
             }
+
             System.out.print("|     |");
             if (i == 0) {
                 System.out.print(" Player Status:");
