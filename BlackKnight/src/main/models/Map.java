@@ -12,6 +12,7 @@ public class Map implements Serializable {
 //    private boolean isActive;
     private String name;
     private Set<Character> characters;
+    private String[][] path;
 
 //    @ManyToMany(cascade = CascadeType.ALL)
 //    @JoinTable (
@@ -47,5 +48,11 @@ public class Map implements Serializable {
             this.characters = new HashSet<Character>();
         }
         this.characters.add(character);
+    }
+
+    public String[][] getPath() { return this.path; }
+
+    public void setPath(int width, int height) {
+        this.path = new String[width][height];
     }
 }

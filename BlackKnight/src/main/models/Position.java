@@ -1,30 +1,25 @@
 package main.models;
-<<<<<<< HEAD:BlackKnight/src/main/models/Position.java
-=======
-
-import java.io.Serializable;
->>>>>>> b0bbeca1f4371aca4d0d9acfe6171f28125ea007:BlackKnight/src/models/Position.java
 
 /**
  * A class for position of Character
  */
 public class Position {
 
-    private Byte x;
-    private Byte y;
+    private int x;
+    private int y;
 
     public Position() {}
 
-    public Position(byte x, byte y) {
+    public Position(int x, int y) {
         this.x = x;
         this.y = y;
     }
 
-    public Byte getX() { return this.x; }
+    public int getX() { return this.x; }
 
-    public void setX(byte x) { this.x = x; }
+    public void setX(int x) { this.x = x; }
 
-    public Byte getY() { return this.y; }
+    public int getY() { return this.y; }
 
-    public void setY(byte y) { this.y = y; }
+    public void setY(int y) { this.y = y; }
 }
