@@ -5,5 +5,4 @@ public class Main {
         MapDesign mapDesign = new MapDesign(20, 10);
         mapDesign.createUI();
     }
-
 }
