@@ -1,5 +1,6 @@
 package main.models;
 
+import java.lang.reflect.Array;
 import java.util.*;
 //import javax.validation.constraints.*;
 
@@ -11,11 +12,11 @@ import java.util.*;
 public abstract class Character {
 
     //private int id;
-    private Short health;
-    private Short characterLevel;
+    private int health;
+    private int characterLevel;
     private String name;
     private Position position;
-    private Set<Weapon> weapons;
+    private List<Weapon> weapons;
     private String image;
 
     // Hibernate One-to-Many Association on Join Table Annotations Example
@@ -28,7 +29,7 @@ public abstract class Character {
 
     public Character() {
         //set default values
-        this.health = (short)100;
+        this.health = (int)100;
     }
 
 //    public int getId() { return this.id; }
@@ -38,16 +39,16 @@ public abstract class Character {
 //        this.id = id;
 //    }
 
-    public Short getHealth() { return this.health; }
+    public int getHealth() { return this.health; }
 
-    public void setHealth(short health) {
+    public void setHealth(int health) {
         if (health < 0) throw new IllegalArgumentException("Only positive number or zero.");
         this.health = health;
     }
 
-    public Short getCharacterLevel() { return this.characterLevel; }
+    public int getCharacterLevel() { return this.characterLevel; }
 
-    public void setCharacterLevel(short characterLevel) {
+    public void setCharacterLevel(int characterLevel) {
         if (characterLevel <= 0) throw new IllegalArgumentException("Only positive number.");
         this.characterLevel = characterLevel;
     }
@@ -66,11 +67,11 @@ public abstract class Character {
         this.position = position;
     }
 
-    public Set<Weapon> getWeapons() { return this.weapons; }
+    public List<Weapon> getWeapons() { return this.weapons; }
 
     public void setWeapons(Weapon weapon) {
         if (this.weapons == null) {
-            this.weapons = new HashSet<Weapon>();
+            this.weapons = new ArrayList<Weapon>();
         }
         this.weapons.add(weapon);
     }

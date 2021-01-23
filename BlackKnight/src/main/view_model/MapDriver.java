@@ -1,9 +1,15 @@
 package main.view_model;
 
+import main.models.MainCharacter;
+import main.models.Character;
 import main.models.Map;
+import main.models.Position;
+
+import java.util.List;
 
 public class MapDriver {
     Map map;
+
 
     public MapDriver(Map map) {
         this.map = map;
@@ -13,4 +19,7 @@ public class MapDriver {
         map.setPath(width, height);
         return map.getPath();
     }
+
+
+
 }
