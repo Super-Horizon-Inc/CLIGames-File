@@ -1,9 +1,11 @@
 package main.models;
 
+import java.io.Serializable;
+
 /**
  * A class for Skills of Main Character of the game.
  */
-public class Skill {
+public class Skill implements Serializable {
 
 //    private int id;
     private String name;

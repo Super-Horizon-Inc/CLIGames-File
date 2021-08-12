@@ -8,10 +8,12 @@ import java.util.*;
  */
 public class Map implements Serializable {
 
+    private static final long serialVersionUID = 1L;
 //    private int id;
 //    private boolean isActive;
     private String name;
-    private Set<Character> characters;
+    private List<Monster> monsters;
+    private Player player;
     private String[][] path;
 
 //    @ManyToMany(cascade = CascadeType.ALL)
@@ -41,17 +43,34 @@ public class Map implements Serializable {
         this.name = name;
     }
 
-    public Set<Character> getCharacter() { return this.characters; }
+    public List<Monster> getMonsters() { return this.monsters; }
 
-    public void setCharacter(Character character) {
-        if (this.characters == null) {
-            this.characters = new HashSet<Character>();
+    public void setMonsters(List<Monster> monsters) { this.monsters = monsters; }
+
+    /**
+     * Add Monster object to the list. If the list isn't existed, create new empty lit.
+     * @param monster the Monster object to be added.
+     */
+    public void addMonster(Monster monster) {
+        if (this.monsters == null) {
+            this.monsters = new ArrayList<>();
         }
-        this.characters.add(character);
+        this.monsters.add(monster);
+    }
+
+    public Player getPlayer() { return this.player; }
+
+    public void setPlayer(Player player) {
+        this.player = player;
     }
 
     public String[][] getPath() { return this.path; }
 
+    /**
+     * Initialize the path with given width and height.
+     * @param width the width of the path.
+     * @param height the height of the path.
+     */
     public void setPath(int width, int height) {
         this.path = new String[width][height];
     }

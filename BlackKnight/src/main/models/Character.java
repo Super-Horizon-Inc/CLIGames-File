@@ -1,22 +1,25 @@
 package main.models;
 
+import java.io.Serializable;
+import java.lang.reflect.Array;
 import java.util.*;
 //import javax.validation.constraints.*;
 
 /**
- * An abstract class for holding common fields, and actions of MainCharacter and Monster classes.
+ * An abstract class for holding common fields, and actions of Player and Monster classes.
  */
 //@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-//@DiscriminatorFormula("case when gold is null then 'MainCharacter' else 'Monster' end")
-public abstract class Character {
+//@DiscriminatorFormula("case when gold is null then 'Player' else 'Monster' end")
+public abstract class Character implements Serializable {
 
     //private int id;
-    private Short health;
-    private Short characterLevel;
+    private int health;
+    private int characterLevel;
+    private int exp;
     private String name;
     private Position position;
-    private Set<Weapon> weapons;
-    private String image;
+    private List<Weapon> weapons;
+    private char icon;
 
     // Hibernate One-to-Many Association on Join Table Annotations Example
 //    @OneToMany(cascade = CascadeType.ALL)
@@ -28,7 +31,7 @@ public abstract class Character {
 
     public Character() {
         //set default values
-        this.health = (short)100;
+        this.health = (int)100;
     }
 
 //    public int getId() { return this.id; }
@@ -38,24 +41,31 @@ public abstract class Character {
 //        this.id = id;
 //    }
 
-    public Short getHealth() { return this.health; }
+    public int getHealth() { return this.health; }
 
-    public void setHealth(short health) {
+    public void setHealth(int health) {
         if (health < 0) throw new IllegalArgumentException("Only positive number or zero.");
         this.health = health;
     }
 
-    public Short getCharacterLevel() { return this.characterLevel; }
+    public int getCharacterLevel() { return this.characterLevel; }
 
-    public void setCharacterLevel(short characterLevel) {
+    public void setCharacterLevel(int characterLevel) {
         if (characterLevel <= 0) throw new IllegalArgumentException("Only positive number.");
         this.characterLevel = characterLevel;
+    }
+
+    public int getExp() { return this.exp; }
+
+    public void setExp(int exp) {
+        if (exp < 0) throw new IllegalArgumentException("Only positive number or zero.");
+        this.exp = exp;
     }
 
     public String getName() { return this.name; }
 
     public void setName(String name) {
-        if (name.length() < 1 || name.length() > 50) throw new IllegalArgumentException("Only between 1 and 50 characters.");
+        if (name.length() < 1 || name.length() > 40) throw new IllegalArgumentException("Only between 1 and 40 characters.");
         this.name = name;
     }
 
@@ -66,19 +76,29 @@ public abstract class Character {
         this.position = position;
     }
 
-    public Set<Weapon> getWeapons() { return this.weapons; }
+    public List<Weapon> getWeapons() { return this.weapons; }
 
-    public void setWeapons(Weapon weapon) {
+    public void setWeapons(List<Weapon> weapons) { this.weapons = weapons; }
+
+    /**
+     * Add Weapon object to the list. If the list isn't existed, create new empty lit. Maximum 3 weapons in the list.
+     * @param weapon the Weapon object to be added.
+     */
+    public void addWeapons(Weapon weapon) {
         if (this.weapons == null) {
-            this.weapons = new HashSet<Weapon>();
+            this.weapons = new ArrayList<>();
+        }
+        //max 3 weapons
+        if (weapons.size() >= 3) {
+            this.weapons.remove(0);
         }
         this.weapons.add(weapon);
     }
 
-    public String getImage() { return this.image; }
+    public char getIcon() { return this.icon; }
 
-    public void setImage(String image) {
-        if ("".equals(image)) throw new IllegalArgumentException("Image path can't be null");
-        this.image = image;
+    public void setIcon(char icon) {
+        if (icon == 0) throw new IllegalArgumentException("Icon can't be null");
+        this.icon = icon;
     }
 }
