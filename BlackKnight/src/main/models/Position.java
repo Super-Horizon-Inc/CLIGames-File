@@ -1,9 +1,11 @@
 package main.models;
 
+import java.io.Serializable;
+
 /**
  * A class for position of Character
  */
-public class Position {
+public class Position implements Serializable {
 
     private int x;
     private int y;

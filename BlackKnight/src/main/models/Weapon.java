@@ -1,9 +1,11 @@
 package main.models;
 
+import java.io.Serializable;
+
 /**
  * A class for Weapons of Characters of the game.
  */
-public class Weapon {
+public class Weapon implements Serializable {
 
 //    private int id;
     private String name;

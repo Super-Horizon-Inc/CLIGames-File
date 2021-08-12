@@ -3,35 +3,41 @@ package main.dao;
 import main.models.Map;
 import java.io.*;
 
+/**
+ * A class for accessing database. A file is served as a database.
+ */
 public class FileDao {
-    private static ObjectInputStream objectInputStream;
-    private static ObjectOutputStream objectOutputStream;
-    private static final String fileName = "db.txt";
+    /**
+     * Database file name.
+     */
+    private final String fileName = "db.txt";
 
+    /**
+     * Constructor. Create new database file if not existed.
+     */
     public FileDao() {
-        try {
-            if (objectInputStream == null) {
-                objectInputStream = new ObjectInputStream(new FileInputStream(fileName));
-            }
-            if (objectOutputStream == null) {
-                File dbFile = new File(fileName);
+        File dbFile = new File(fileName);
+        if (!dbFile.exists()) {
+            try {
                 dbFile.createNewFile();
-                objectOutputStream = new ObjectOutputStream(new FileOutputStream(fileName));
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
-        catch (Exception e) {
-            e.printStackTrace();
         }
     }
 
+    /**
+     * Load Map object saved in the database file.
+     * @return the saved Map object.
+     */
     public Map loadMap() {
         try {
-            return (Map) objectInputStream.readObject();
+            //file content got deleted if placing this in constructor
+            //reuse objectInputStream causes error -> create new object each time load
+            ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(fileName));
+            return (Map) objectInputStream.readObject(); //both Player and Character must implement Serializable
         } catch (IOException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -39,16 +45,28 @@ public class FileDao {
         return null;
     }
 
+    /**
+     * Save Map object to database file or override existing one.
+     * @param map the Map object to be saved.
+     */
     public void saveOrUpdateMap(Map map) {
         try {
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(fileName));
             objectOutputStream.writeObject(map);
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
+    /**
+     * Delete the database file if existing.
+     */
+    public void delete() {
+        File dbFile = new File(fileName);
+        if (dbFile.exists()) {
+            dbFile.delete();
+        }
+    }
 }

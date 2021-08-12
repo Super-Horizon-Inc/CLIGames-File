@@ -1,9 +1,11 @@
 package main.models;
 
+import java.io.Serializable;
+
 /**
  * A class for Monsters of the game.
  */
-public class Monster extends Character {
+public class Monster extends Character implements Serializable{
 
     private Boolean isVisible;
 
